@@ -4,11 +4,13 @@ import Applications from "./components/Applications.vue";
 import Customers from "./components/Customers.vue";
 import NotFound from "./components/NotFound.vue";
 import Sidebar from "./components/Sidebar.vue";
+import AddApplication from "./components/AddApplication.vue";
 import { ref, computed } from "vue";
 
 const routes = {
   '/': Applications,
-  '/customers': Customers
+  '/customers': Customers,
+  '/addApplication': AddApplication
 }
 
 const currentPath = ref(window.location.hash)
@@ -31,13 +33,9 @@ const currentView = computed(() => {
           <Sidebar />
         </div>
         <div class="col-9">
-          <component :is="currentView" />
+          <router-view></router-view>
         </div>
       </div>
     </div>
   </main>
 </template>
-
-<style scoped>
-
-</style>

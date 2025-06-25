@@ -17,5 +17,5 @@ const customers = ref(appStore.getCustomers());
    
     <br/>
 
-    <Customer v-for="customer in customers" :key="customer.id" :customer="customer"/>
+    <Customer v-if="customers.length > 0" v-for="customer in customers" :key="customer.id" :customer="customer"/>
 </template>

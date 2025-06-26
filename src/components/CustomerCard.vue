@@ -1,5 +1,9 @@
-<script setup>
-defineProps(['customer'])
+<script setup lang="ts">
+import Customer from '../models/Customer.ts'
+
+defineProps<{
+    customer: Customer
+}>()
 </script>
 
 <template>

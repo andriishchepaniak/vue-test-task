@@ -1,14 +1,16 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { useAppStore } from '.././store/store.js'
 import { useRouter } from 'vue-router';
+import Customer from '../models/Customer.ts'
+import Application from '../models/Application.ts'
 
 const appStore = useAppStore();
 const router = useRouter();
 
-const customers = ref(appStore.getCustomers());
+const customers = ref<Customer[]>(appStore.getCustomers());
 
-const newApplication = ref({
+const newApplication = ref<Application>({
     date: new Date().toISOString().slice(0, 10),
     reason: '',
     comment: '',
@@ -17,9 +19,8 @@ const newApplication = ref({
     file: null
 });
 
-const fileChanged = (e) => {
+const fileChanged = (e: Event) => {
     const file = e.target.files[0];
-    //newApplication.value.file = e.target.files[0];
 
     if (!file) return;
 
@@ -35,8 +36,8 @@ const fileChanged = (e) => {
 }
 
 const addApplication = () => {
-    console.log(newApplication.value);
     appStore.addApplication({ ...newApplication.value });
+    
     newApplication.value = {
         date: new Date().toISOString().slice(0, 10),
         reason: '',

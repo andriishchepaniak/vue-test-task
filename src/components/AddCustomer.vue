@@ -1,16 +1,17 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { useAppStore } from '.././store/store.js'
+import type {Customer} from '../models/Customer.ts'
 
 const appStore = useAppStore();
 
-const newCustomer = ref({
+const newCustomer = ref<Customer>({
     name: '',
     surname: '',
     address: ''
 });
 
-const addCustomer = () => {
+const addCustomer = (): void => {
     console.log(newCustomer.value);
     appStore.addCustomer({ ...newCustomer.value });
     newCustomer.value = { name: '', address: '' };

@@ -1,13 +1,13 @@
-<script setup>
-import { useRouter } from 'vue-router';
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+import Application from '../models/Application.js'
 
-const props = defineProps(['application'])
+const props = defineProps<{application: Application}>()
 
 const router = useRouter();
 
 const editApplication = () => {
   router.push({ name: 'editApplication', params: { id: props.application.id } })
-  //router.push('/editApplication/' + props.application.id);
 }
 
 </script>

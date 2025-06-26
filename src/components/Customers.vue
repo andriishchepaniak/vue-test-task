@@ -1,12 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
-import { useAppStore } from '.././store/store.js'
-import AddCustomer from './AddCustomer.vue'
-import Customer from './Customer.vue'
+import { useAppStore } from '../store/store.ts';
+import AddCustomer from './AddCustomer.vue';
+import CustomerCard from './CustomerCard.vue';
+import type { Customer } from '@/models/Customer';
 
-const appStore = useAppStore();
+const appStore: any = useAppStore();
 
-const customers = ref(appStore.getCustomers());
+const customers = ref<Customer[]>(appStore.getCustomers());
 
 </script>
 
@@ -17,5 +18,5 @@ const customers = ref(appStore.getCustomers());
    
     <br/>
 
-    <Customer v-if="customers.length > 0" v-for="customer in customers" :key="customer.id" :customer="customer"/>
+    <CustomerCard v-if="customers.length > 0" v-for="customer in customers" :key="customer.id" :customer="customer"/>
 </template>

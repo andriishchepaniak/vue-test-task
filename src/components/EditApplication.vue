@@ -1,18 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { useAppStore } from '.././store/store.js'
 import { useRouter, useRoute } from 'vue-router';
-
-const props = defineProps(['id'])
+import Customer from '../models/Customer.ts'
+import Application from '../models/Application.ts'
 
 const appStore = useAppStore();
 const router = useRouter();
 const route = useRoute();
 
-const customers = ref(appStore.getCustomers());
-const application = ref(null);
+const customers = ref<Customer[]>(appStore.getCustomers());
+const application = ref<Application | null>(null);
 
-const printSection = ref(null);
+const printSection = ref<HTMLElement | null>(null);
 
 onMounted(() => {
     console.log("here");

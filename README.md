@@ -1,5 +1,5 @@
 # vue-test-task
-
+## Note: there are second branch named 'add-typescript' which contains updated code using TypeScript (what is better for big projects)
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
